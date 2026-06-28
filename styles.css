@@ -1,0 +1,181 @@
+/* =====================================================================
+   styles.css — capa propia SOBRE Bootstrap 5
+   Solo definimos lo que le da identidad a la tienda y pequeños ajustes.
+   Todo lo estructural (grid, modal, offcanvas) lo resuelve Bootstrap.
+   ===================================================================== */
+
+/* ---------- Tokens de diseño (paleta y tipografía en un solo lugar) ----------
+   DRY: si querés cambiar el color primario, lo cambiás acá y se propaga. */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --ink: #1a1d29;
+  --muted: #6b7280;
+  --primary: #4338ca;       /* índigo */
+  --primary-dark: #3730a3;
+  --accent: #f97316;        /* naranja: CTAs y badge */
+  --border: #e5e7eb;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(26, 29, 41, 0.08);
+
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+/* ---------- Base ---------- */
+html, body { height: 100%; }
+
+body {
+  display: flex;
+  flex-direction: column;        /* footer pegado abajo aunque haya poco contenido */
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .navbar-brand, .modal-title, .offcanvas-title {
+  font-family: var(--font-display);
+}
+
+/* ---------- Header / Nav ---------- */
+.app-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand { color: var(--primary); font-size: 1.35rem; }
+.navbar-brand i { color: var(--accent); }
+
+.search-form { min-width: min(320px, 70vw); }
+.search-form .input-group-text {
+  background: var(--surface);
+  border-right: 0;
+  color: var(--muted);
+}
+.search-form .form-control { border-left: 0; }
+.search-form .form-control:focus {
+  box-shadow: none;
+  border-color: var(--border);
+}
+
+/* Botón carrito */
+.btn-cart {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font-size: 1.2rem;
+  border-radius: var(--radius);
+}
+.btn-cart:hover { background: var(--bg); }
+
+/* Badge (burbuja) de cantidad */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+}
+
+/* ---------- Barra de categorías ---------- */
+.category-bar .btn {
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 500;
+  padding-inline: 1rem;
+}
+.category-bar .btn:hover { border-color: var(--primary); }
+.category-bar .btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* ---------- Cards de producto ---------- */
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  height: 100%;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.product-card .product-img {
+  height: 200px;
+  object-fit: contain;
+  padding: 1rem;
+  background: #fff;
+}
+.product-card .product-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  /* recorta a 2 líneas para que todas las cards midan igual */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.6em;
+}
+.product-card .product-price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ---------- Botones primarios / acento ---------- */
+.btn-primary {
+  --bs-btn-bg: var(--primary);
+  --bs-btn-border-color: var(--primary);
+  --bs-btn-hover-bg: var(--primary-dark);
+  --bs-btn-hover-border-color: var(--primary-dark);
+  --bs-btn-active-bg: var(--primary-dark);
+}
+.btn-accent {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-accent:hover { background: #ea6a0c; color: #fff; }
+
+/* ---------- Ítems del carrito ---------- */
+.cart-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.cart-item img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.cart-item .qty-controls { display: flex; align-items: center; gap: 0.35rem; }
+.cart-item .qty-controls .btn {
+  --bs-btn-padding-x: 0.5rem;
+  --bs-btn-padding-y: 0.1rem;
+  line-height: 1;
+}
+.cart-footer { border-top: 1px solid var(--border); }
+
+/* ---------- Footer ---------- */
+.app-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Accesibilidad: respeta "menos movimiento" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .product-card { transition: none; }
+}
