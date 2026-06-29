@@ -8,21 +8,21 @@ const cartBadge  = document.getElementById('cart-badge');
 
 function itemHTML(item) {
   return `
-    <li class="cart-item d-flex align-items-center gap-2 py-2 border-bottom">
-      <img src="${item.image}" alt="${item.title}" class="cart-item__img rounded" />
+    <li class="cart-item">
+      <img src="${item.image}" alt="${item.title}" />
       <div class="flex-grow-1 overflow-hidden">
-        <p class="cart-item__title mb-1 text-truncate">${item.title}</p>
+        <p class="mb-0 text-truncate small fw-semibold">${item.title}</p>
         <small class="text-muted">${formatPrice(item.price)} c/u</small>
-      </div>
-      <div class="d-flex flex-column align-items-center gap-1">
-        <div class="input-group input-group-sm cart-item__qty">
-          <button class="btn btn-outline-secondary" data-action="decrement" data-id="${item.id}">−</button>
-          <span class="input-group-text">${item.quantity}</span>
-          <button class="btn btn-outline-secondary" data-action="increment" data-id="${item.id}">+</button>
+        <div class="d-flex align-items-center justify-content-between mt-1">
+          <div class="qty-controls">
+            <button class="btn btn-outline-secondary btn-sm" data-action="decrement" data-id="${item.id}">−</button>
+            <span class="px-2">${item.quantity}</span>
+            <button class="btn btn-outline-secondary btn-sm" data-action="increment" data-id="${item.id}">+</button>
+          </div>
+          <button class="btn btn-link btn-sm text-danger p-0" data-action="remove" data-id="${item.id}">
+            <i class="bi bi-trash3"></i> Quitar
+          </button>
         </div>
-        <button class="btn btn-link btn-sm text-danger p-0" data-action="remove" data-id="${item.id}">
-          <i class="bi bi-trash3"></i> Quitar
-        </button>
       </div>
     </li>`;
 }
