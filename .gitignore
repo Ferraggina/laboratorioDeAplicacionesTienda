@@ -1,0 +1,14 @@
+# Configuración local de Claude Code
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+ 
+# Dependencias (el proyecto usa CDNs, pero por las dudas)
+node_modules/
+ 
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+ 
+# Logs
+*.log
