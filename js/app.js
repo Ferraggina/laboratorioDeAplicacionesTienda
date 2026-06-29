@@ -97,7 +97,7 @@ async function onCheckout() {
   if (!ok) return;
   emptyCart();
   refreshCart();
-  bootstrap.Offcanvas.getInstance(document.getElementById('cart-offcanvas'))?.hide();
+  bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('cart-offcanvas')).hide();
   await success('¡Gracias por tu compra! Tu pedido fue recibido.');
 }
 
@@ -122,7 +122,7 @@ async function init() {
   document.getElementById('checkout-btn').addEventListener('click', onCheckout);
 
   document.getElementById('open-cart-btn').addEventListener('click', () => {
-    bootstrap.Offcanvas.getOrCreate(document.getElementById('cart-offcanvas')).show();
+    bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('cart-offcanvas')).show();
   });
 }
 

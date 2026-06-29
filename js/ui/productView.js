@@ -109,6 +109,6 @@ export function showProductModal(product) {
       data-id="${product.id}"
     ><i class="bi bi-cart-plus"></i> Agregar al carrito</button>`;
 
-  const modal = bootstrap.Modal.getOrCreate(document.getElementById('product-modal'));
+  const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('product-modal'));
   modal.show();
 }
