@@ -1,11 +1,10 @@
-const CART_KEY = 'tiendajs_cart';
+const CART_KEY = "tiendajs_cart";
 
 export function getCart() {
   try {
     const raw = localStorage.getItem(CART_KEY);
     return raw ? JSON.parse(raw) : [];
   } catch {
-    // Si el JSON está corrupto, arrancamos con carrito vacío
     return [];
   }
 }
