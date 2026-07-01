@@ -3,6 +3,7 @@ const CART_KEY = "tiendajs_cart";
 export function getCart() {
   try {
     const raw = localStorage.getItem(CART_KEY);
+    console.log("soy raw", raw);
     return raw ? JSON.parse(raw) : [];
   } catch {
     return [];

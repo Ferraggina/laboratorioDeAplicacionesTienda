@@ -1,6 +1,7 @@
 # TiendaJS — E-commerce SPA
 
 Trabajo Práctico para la materia **Laboratorio de Aplicaciones Web Cliente** (ISTEA).
+Alumno: Cristian Ferraggina.
 
 ## Stack
 
@@ -33,7 +34,3 @@ js/
   utils/format.js             ← formato de precio
   app.js                      ← orquestador de eventos
 ```
-
-## Cómo correrlo
-
-Abrí `index.html` con **Live Server** (VS Code). No requiere instalación ni build tools.

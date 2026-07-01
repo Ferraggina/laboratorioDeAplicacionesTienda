@@ -1,8 +1,4 @@
-# Configuración local de Claude Code
-.claude/
-CLAUDE.md
-CLAUDE.local.md
- 
+
 # Dependencias (el proyecto usa CDNs, pero por las dudas)
 node_modules/
  
