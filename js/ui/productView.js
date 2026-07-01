@@ -1,5 +1,14 @@
 import { formatPrice } from '../utils/format.js';
 
+const CATEGORIAS = {
+  'electronics':      'Electrónica',
+  'jewelery':         'Joyería',
+  "men's clothing":   'Ropa masculina',
+  "women's clothing": 'Ropa femenina',
+};
+
+const traducir = cat => CATEGORIAS[cat] ?? cat;
+
 const grid      = document.getElementById('product-grid');
 const loading   = document.getElementById('loading');
 const emptyState = document.getElementById('empty-state');
@@ -33,9 +42,9 @@ export function renderCategories(categories, activeCategory = null) {
 
   const catBtns = categories.map(cat => `
     <button
-      class="btn btn-sm ${activeCategory === cat ? 'btn-primary' : 'btn-outline-secondary'} category-btn text-capitalize"
+      class="btn btn-sm ${activeCategory === cat ? 'btn-primary' : 'btn-outline-secondary'} category-btn"
       data-category="${cat}"
-    >${cat}</button>`).join('');
+    >${traducir(cat)}</button>`).join('');
 
   categoryBar.innerHTML = allBtn + catBtns;
 }
@@ -58,7 +67,7 @@ function cardHTML(product) {
           loading="lazy"
         />
         <div class="card-body d-flex flex-column">
-          <span class="badge bg-secondary text-capitalize mb-2">${product.category}</span>
+          <span class="badge bg-secondary mb-2">${traducir(product.category)}</span>
           <h3 class="card-title product-card__title h6">${product.title}</h3>
           <div class="mb-2">${buildStars(product.rate)}</div>
           <p class="fs-5 fw-bold mt-auto mb-3">${formatPrice(product.price)}</p>
@@ -99,7 +108,7 @@ export function showProductModal(product) {
         class="product-modal__img"
       />
     </div>
-    <span class="badge bg-secondary text-capitalize mb-2">${product.category}</span>
+    <span class="badge bg-secondary mb-2">${traducir(product.category)}</span>
     <div class="mb-2">${buildStars(product.rate)}</div>
     <p class="text-muted">${product.description}</p>
     <p class="fs-4 fw-bold">${formatPrice(product.price)}</p>
